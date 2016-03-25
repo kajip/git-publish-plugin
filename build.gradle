@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.11.3'
+    }
+}
+
+// グループ
+group = 'org.kajip'
+// バージョン
+version = '0.1.0'
+
+apply plugin: 'groovy'
+
+// 外部ライブラリのバージョンチェックの設定
+// 参照 http://blog.guildworks.jp/2015/08/07/gradle-versions-plugin-%E3%81%AE%E3%81%94%E7%B4%B9%E4%BB%8B/
+apply plugin: 'com.github.ben-manes.versions'
+
+/**
+ * 設定ファイルの読み込み
+ */
+// 環境ごとの設定を実施
+apply from: file('etc/gradle/base/environment.gradle')
+
+// プロジェクト固有の設定
+apply from: file('etc/gradle/project.gradle')
+
+// Javaのコンパイル＆テストの設定
+apply from: file('etc/gradle/base/java.gradle')
+
+// ISP領域向けJava共通ライブラリの設定
+apply from: file('etc/gradle/base/library.gradle')
+
+// jarタスクの設定
+apply from: file('etc/gradle/base/jar.gradle')
+
+// Mavenの設定
+apply from: file('etc/gradle/base/maven.gradle')
+
+// Gradleラッパーの設定
+apply from: file('etc/gradle/base/wrapper.gradle')

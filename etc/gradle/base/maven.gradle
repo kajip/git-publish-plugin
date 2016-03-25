@@ -1,0 +1,45 @@
+/** jarファイルのアップロード先の設定 */
+
+// Maven Repository Upload
+apply plugin: 'maven'
+
+ext {
+    //Maven Private Repository をgit cloneした場所を指定する箇所
+    mavenRepositoryDir = "${buildDir}/repo"
+}
+
+// JavaDoc, GroovyDocのjarを生成
+task javadocJar(type: Jar, dependsOn: [groovydoc]) {
+    classifier = 'javadoc'
+    from groovydoc.destinationDir
+}
+
+// ソースコードのjarを生成
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+
+artifacts {
+    archives jar
+    archives javadocJar
+    archives sourcesJar
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "file:${mavenRepositoryDir}/repo")
+    }
+}
+
+apply plugin: 'kajip.git-publisher'
+
+git_publisher {
+    uri 'https://github.com/biglobe-isp/isp-repo.git'
+    directory new File(mavenRepositoryDir)
+    commitMessage "add ${project.name} ${project.version}"
+}
+
+uploadArchives.dependsOn gitClone
+gitPublish.dependsOn uploadArchives

@@ -1,0 +1,3 @@
+// Gradleを起動した時、最初に読み込まれるファイル
+// マルチプロジェクトやプロジェクト名変更はここで
+rootProject.name = 'git-publish-plugin'

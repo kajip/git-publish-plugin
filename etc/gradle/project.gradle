@@ -1,0 +1,13 @@
+/**
+ * プロジェクト固有の設定
+ */
+// 外部ライブラリ
+ext {
+    // 参考：http://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit
+    jgitVersion = '4.2.0.201601211800-r'
+}
+
+dependencies {
+    // JGit
+    compile "org.eclipse.jgit:org.eclipse.jgit:${jgitVersion}"
+}

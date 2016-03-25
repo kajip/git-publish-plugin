@@ -1,0 +1,60 @@
+/**
+ * ISP領域向けJava共通ライブラリの設定
+ */
+// Mavenリポジトリの設定
+repositories {
+    mavenCentral()
+}
+
+/**
+ * プロダクトコードで使用する依存ライブラリの設定
+ */
+
+// 外部ライブラリ
+ext {
+    // 参考：http://mvnrepository.com/artifact/org.projectlombok/lombok
+    lombokVersion = '1.14.8'
+
+    // 参考：http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    jacksonVersion = '2.4.2'
+
+    // 参考：http://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    slf4jVersion = '1.7.7'
+}
+
+dependencies {
+    // Gralde API
+    compile gradleApi()
+
+    // Groovy 関連
+    compile localGroovy()
+
+    // Getter等のボイラープレートコードの自動生成（参考URL　http://www.coppermine.jp/docs/programming/2014/01/lombok.html）
+    compile "org.projectlombok:lombok:${lombokVersion}"
+
+    // JSON 関連
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}" // POJOをJSONにマッピング／Springから呼び出される
+
+    // ロギング 関連
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
+}
+
+/**
+ * テストコードで使用する依存ライブラリの設定
+ */
+
+// 外部ライブラリ
+ext {
+    // 参考：http://mvnrepository.com/artifact/junit/junit
+    junitVersion = '4.12'
+
+    // 参考：http://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    logbackVersion = '1.1.2'
+}
+
+dependencies {
+
+    compile "junit:junit:${junitVersion}"
+
+    compile "ch.qos.logback:logback-classic:${logbackVersion}"
+}

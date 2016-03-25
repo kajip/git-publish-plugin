@@ -1,0 +1,4 @@
+/**
+ * gradlewコマンドを利用できるようにする
+ */
+task wrapper(type: Wrapper)

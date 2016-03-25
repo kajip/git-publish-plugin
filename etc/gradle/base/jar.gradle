@@ -1,0 +1,15 @@
+/**
+ * gradlew jar コマンド実行時の処理の設定
+ */
+
+// jarファイル名
+//archivesBaseName = 'isplibrary'
+
+// gradlew jar コマンド実行時の処理
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'ISP Library', 'Implementation-Version': version
+    }
+    exclude '**/META-INF/**'
+    exclude '**/properties/**'
+}
