@@ -1,16 +1,9 @@
-/**
- * ISP領域向けJava共通ライブラリの設定
- */
 // Mavenリポジトリの設定
 repositories {
     mavenCentral()
 }
 
-/**
- * プロダクトコードで使用する依存ライブラリの設定
- */
-
-// 外部ライブラリ
+// 外部ライブラリのバージョン
 ext {
     // 参考：http://mvnrepository.com/artifact/org.projectlombok/lombok
     lombokVersion = '1.14.8'
@@ -20,6 +13,13 @@ ext {
 
     // 参考：http://mvnrepository.com/artifact/org.slf4j/slf4j-api
     slf4jVersion = '1.7.7'
+
+
+    // 参考：http://mvnrepository.com/artifact/junit/junit
+    junitVersion = '4.12'
+
+    // 参考：http://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    logbackVersion = '1.1.2'
 }
 
 dependencies {
@@ -29,6 +29,7 @@ dependencies {
     // Groovy 関連
     compile localGroovy()
 
+
     // Getter等のボイラープレートコードの自動生成（参考URL　http://www.coppermine.jp/docs/programming/2014/01/lombok.html）
     compile "org.projectlombok:lombok:${lombokVersion}"
 
@@ -37,24 +38,11 @@ dependencies {
 
     // ロギング 関連
     compile "org.slf4j:slf4j-api:${slf4jVersion}"
-}
 
-/**
- * テストコードで使用する依存ライブラリの設定
- */
 
-// 外部ライブラリ
-ext {
-    // 参考：http://mvnrepository.com/artifact/junit/junit
-    junitVersion = '4.12'
+    // JUnit
+    testCompile "junit:junit:${junitVersion}"
 
-    // 参考：http://mvnrepository.com/artifact/ch.qos.logback/logback-classic
-    logbackVersion = '1.1.2'
-}
-
-dependencies {
-
-    compile "junit:junit:${junitVersion}"
-
-    compile "ch.qos.logback:logback-classic:${logbackVersion}"
+    // Logback
+    testCompile "ch.qos.logback:logback-classic:${logbackVersion}"
 }

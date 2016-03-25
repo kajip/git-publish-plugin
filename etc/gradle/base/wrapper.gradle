@@ -1,4 +1,6 @@
 /**
  * gradlewコマンドを利用できるようにする
  */
-task wrapper(type: Wrapper)
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}

@@ -46,3 +46,6 @@ $ git flow release start <ブランチ名>
 
 #### リモートへpush
 
+## 既知の問題
+
+    * GitHub に ssh で clone/push すると認証が上手く動作しないことがある
