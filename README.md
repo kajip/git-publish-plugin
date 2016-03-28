@@ -23,12 +23,12 @@ git-publish-plugin
 
 ## プロパティ
 
-* git_publisher.uri (String): GitレポジトリのURL（必須）
-* git_publisher.directory (File): ローカルのWorkTreeのディレクトリパス（必須）
-* git_publisher.remote (String): リモート名（デフォルト：origin）
-* git_publisher.branch (String): ブランチ（デフォルト：master）
-* git_publisher.commitMessage (String): コミットメッセージ
-* git_publisher.credentialsProvider (CredentialsProvider): 認証に使うクラスインスタンス（デフォルト：NetRCCredentialsProvider）
+* git_publish.uri (String): GitレポジトリのURL（必須）
+* git_publish.directory (File): ローカルのWorkTreeのディレクトリパス（必須）
+* git_publish.remote (String): リモート名（デフォルト：origin）
+* git_publish.branch (String): ブランチ（デフォルト：master）
+* git_publish.commitMessage (String): コミットメッセージ
+* git_publish.credentialsProvider (CredentialsProvider): 認証に使うクラスインスタンス（デフォルト：NetRCCredentialsProvider）
 
 
 ## build.gradle 例
@@ -38,9 +38,14 @@ git-publish-plugin
 ```groovy
 
 // ライブラリのjarをGitで管理しているプライベートレポジトリに登録する例
+buildscript {
+    dependencies {
+        classpath 'org.kajip:git-publish-plugin:0.1.0.2'
+    }
+}
 
 apply plugin: 'maven'
-apply plugin: 'kajip.git-publisher' //
+apply plugin: 'kajip.git-publish'
 
 ext {
     mavenRepositoryDir = "${buildDir}/repo"
@@ -72,11 +77,9 @@ uploadArchives {
 }
 
 // git publisher plugin の設定
-git_publisher {
+git_publish {
     uri 'https://github.com/tkajita/private-repository.git'
-
     directory new File(mavenRepositoryDir)
-
     commitMessage "add ${project.name} ${project.version}"
 }
 

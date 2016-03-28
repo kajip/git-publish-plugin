@@ -1,4 +1,4 @@
-package org.kajip.gradle.git_publisher
+package org.kajip.gradle.git_publish
 
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.transport.RefSpec
@@ -10,7 +10,7 @@ class GitPublishTask extends DefaultTask {
     @TaskAction
     def invoke() {
 
-        GitPublisherExtension config = getProject().git_publisher
+        GitPublishExtension config = getProject().git_publish
 
 
         Git git = Git.open(config.directory)

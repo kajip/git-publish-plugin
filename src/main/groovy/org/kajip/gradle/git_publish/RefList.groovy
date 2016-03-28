@@ -1,4 +1,4 @@
-package org.kajip.gradle.git_publisher
+package org.kajip.gradle.git_publish
 
 import org.eclipse.jgit.lib.Ref
 

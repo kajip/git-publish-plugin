@@ -1,4 +1,4 @@
-package org.kajip.gradle.git_publisher
+package org.kajip.gradle.git_publish
 
 import org.eclipse.jgit.api.Git
 import org.eclipse.jgit.api.ListBranchCommand.ListMode
@@ -10,7 +10,7 @@ class GitCloneTask extends DefaultTask {
     @TaskAction
     def invoke() {
 
-        GitPublisherExtension config = getProject().git_publisher
+        GitPublishExtension config = getProject().git_publish
 
 
         // ワークツリーの取得
@@ -43,7 +43,7 @@ class GitCloneTask extends DefaultTask {
         }
     }
 
-    private Git openWorkTree(GitPublisherExtension config) {
+    private Git openWorkTree(GitPublishExtension config) {
         if (!config.directory.isDirectory()) {
 
             // git clone <<uri>> <<directory>>

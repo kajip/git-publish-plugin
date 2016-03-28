@@ -5,6 +5,6 @@
 // gradlew jar コマンド実行時の処理
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Git Publisher Gradle Plugin', 'Implementation-Version': version
+        attributes 'Implementation-Title': 'Git Publish Gradle Plugin', 'Implementation-Version': version
     }
 }

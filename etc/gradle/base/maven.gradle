@@ -33,12 +33,13 @@ uploadArchives {
     }
 }
 
-apply plugin: 'kajip.git-publisher'
+apply plugin: 'kajip.git-publish'
 
-git_publisher {
+git_publish {
     uri 'https://github.com/biglobe-isp/isp-repo.git'
     directory new File(mavenRepositoryDir)
     commitMessage "add ${project.name} ${project.version}"
+    branch 'staging'
 }
 
 uploadArchives.dependsOn gitClone
